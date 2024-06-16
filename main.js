@@ -4,16 +4,13 @@ function gameBoard () {
     //     user: "X",
     //     marker: "X"
     // }
-    let board = [
-        "X", 1, 1,
-        1, "X", 1,
-        1, 1, "X",
-    ];
-
     let markers = {
         x: "X",
         o: "O",
+        placeholder: 1
     }
+    let board = new Array(9).fill(markers.placeholder)
+
 
     // hacky part to print the board thats decipherable in console
     function printBoard() {
@@ -43,32 +40,39 @@ function gameBoard () {
     }
 
     function checkForWins() {
-        let winSequence = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
-
-        // let wins = {
-        //     rows: [[0, 1, 2], [3, 4, 5], [6, 7, 8]],
-        //     columns: [[0, 3, 6], [1, 4, 7], [2, 5, 8]],
-        //     diagons: [[0, 4, 8], [2, 4, 6]],
-        // }
-
-        winSequence.forEach((singleSequence, i) => {
-            // console.log(winSequence[i][0]);
-            singleSequence.forEach((e, i2) => {
-
-                if (i2 == 0 ) {
-                    if (board[singleSequence[i2]] === board[singleSequence[i2+1]] && board[singleSequence[i2+1]] === board[singleSequence[i2+2]]) {
-                        if (board[singleSequence[i2]] == markers.x || board[singleSequence[i2]] == markers.o) {
-                            console.log("tis same " + singleSequence + board[singleSequence[i2]]);
+        let winSequence = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+        ];
+    
+        // Iterate over each winning sequence
+        for (let i = 0; i < winSequence.length; i++) {
+            let singleSequence = winSequence[i];
+    
+            // Check the elements of the current winning sequence
+            for (let i2 = 0; i2 < singleSequence.length; i2++) {
+                if (i2 === 0) {
+                    if (board[singleSequence[i2]] === board[singleSequence[i2 + 1]] && board[singleSequence[i2 + 1]] === board[singleSequence[i2 + 2]]) {
+                        if (board[singleSequence[i2]] === markers.x || board[singleSequence[i2]] === markers.o) {
+                            // Return immediately when a winning sequence is found
+                            return {
+                                status: 1,
+                                winner: board[singleSequence[i2]],
+                                sequence: singleSequence
+                            };
                         }
-                    } else {
-                        console.log("its diff");
                     }
                 }
-
-            });
-        });
+            }
+        }
+    
+        // Return status 0 if no winning sequence is found
+        return {
+            status: 0
+        };
     }
-    return { board, printBoard, user, enterUserChoice, checkForWins }
+        return { markers, board, printBoard, user, enterUserChoice, checkForWins }
 }
 
 
@@ -86,30 +90,34 @@ function temporaryUserInputShortener (userMarker, index) {
     }
 }
 let i = 0;
-newGame.checkForWins();
-// while (true) {
-//     let userChoiceIndex = prompt("Enter the choice");
-//     if (newGame.board[userChoiceIndex] != "-") {
-//         console.error("skipped")
-//         continue;
-//     } 
-//     if (i%2 == 0) {
-//         i++
-//         console.log("user x choice")
-//         newGame.enterUserChoice(newGame.user("x", userChoiceIndex))
-//         newGame.printBoard();    
+// newGame.checkForWins();
+while (true) {
+    let userChoiceIndex = prompt("Enter the choice");
+    if (newGame.board[userChoiceIndex] != newGame.markers.placeholder) {
+        console.error("skipped")
+        continue;
+    } 
+    if (i%2 == 0) {
+        i++
+        console.log("user x choice")
+        newGame.enterUserChoice(newGame.user("X", userChoiceIndex))
+        console.log(newGame.checkForWins().status)
+        // console.log(newGame.checkForWins())
+        newGame.printBoard();    
 
-//     } else {
-//         i++
-//         console.log("user o choice")
-//         newGame.enterUserChoice(newGame.user("o", userChoiceIndex))
-//         newGame.printBoard();    
-//     }
-//     if (i == 9) {
-//         break;
-//     }
+    } else {
+        i++
+        console.log("user o choice")
+        newGame.enterUserChoice(newGame.user("O", userChoiceIndex))
+        console.log(newGame.checkForWins().status)
+        // console.log(newGame.checkForWins())
+        newGame.printBoard();    
+    }
+    if (i == 9) {
+        break;
+    }
 
-// }
+}
 
 // for (let i = 0; i < 9; i++) {
 //     if (i%2 === 0) {
