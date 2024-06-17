@@ -98,15 +98,66 @@ p {
     stroke: #704BCE;
 }
 
-/* path, circle {
-    stroke: #a969e3
-} */
-/* path {
-    background-color:;
-    stroke: #704BCE;
-} */
+.game-page {
+    /* border: 1px solid red; */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
 
-@media only screen and (max-width: 480px) {  
+.game-score-bar {
+    display: flex;
+    gap: 1rem;
+    /* outline: 1px solid white; */
+    height: min(50px);
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-score-stats {
+    display: flex;
+    gap: 1rem;
+}
+
+.game-board {
+    /* border: 2px solid red; */
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-board-container {
+    height: 100%;
+    display: grid;
+    width: min(600px, 90vw);
+    height: min(600px, 90vw);
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    gap: 5px;
+}
+
+.game-cell {
+    background-color: #704BCE;
+    /* border: 2px solid red; */
+}
+
+.game-controls {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: end; */
+    align-items: stretch;
+
+}
+
+.game-controls button {
+    width: 300px;
+}
+@media only screen and (max-width: 580px) {  
     .start-page-card {
         width: 200px;
         flex-direction: column;
@@ -119,5 +170,7 @@ p {
         display: flex;
         flex-direction: column;
     }    
-
+    .game-controls {
+        flex-direction: column;
+    }
 }
