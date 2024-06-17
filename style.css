@@ -1,6 +1,10 @@
 * {
     margin: 0;
     font-family: sans-serif;
+    --font-color: #704BCE;
+    --background-color: #704BCE;
+    --background-color-2: #a969e3;
+    --cell-color: #6849b6;
 }
 
 input, button, textarea, select {
@@ -120,6 +124,21 @@ p {
 .game-score-stats {
     display: flex;
     gap: 1rem;
+    align-items: end;
+    color: white;
+    font-weight: 600;
+    margin-top: auto;
+}
+
+.game-score-stats div {
+    /* border: 1px solid white; */
+}
+
+.score {
+    background-color: white;
+    padding: 7px 30px;
+    border-radius: 15px;
+    color: #704BCE;
 }
 
 .game-board {
@@ -137,26 +156,39 @@ p {
     width: min(600px, 90vw);
     height: min(600px, 90vw);
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-    gap: 5px;
+    gap: 10px;
 }
 
 .game-cell {
-    background-color: #704BCE;
+    background-color: var(--background-color);
+    border-radius: 15px;
     /* border: 2px solid red; */
 }
 
 .game-controls {
-    margin-top: auto;
+    margin: auto 0 10px 0;
     display: flex;
     flex-direction: row;
     /* justify-content: end; */
     align-items: stretch;
-
+    gap: 10px;
 }
 
 .game-controls button {
-    width: 300px;
+    width: 290px;
+    background-color: #704BCE;
+    color: white;
+    font-weight: 600;
+    border: 1px solid white;
+    height: 50px;
+    border-radius: 15px;
 }
+
+.game-controls button:first-child {
+    background-color: white;
+    color: #704BCE;
+}
+
 @media only screen and (max-width: 580px) {  
     .start-page-card {
         width: 200px;
