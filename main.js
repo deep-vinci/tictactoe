@@ -41,9 +41,9 @@ function gameBoard () {
 
     function checkForWins() {
         let winSequence = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8],
-            [0, 3, 6], [1, 4, 7], [2, 5, 8],
-            [0, 4, 8], [2, 4, 6]
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
+            [0, 4, 8], [2, 4, 6]             // diagons
         ];
     
         // Iterate over each winning sequence
@@ -72,7 +72,7 @@ function gameBoard () {
             status: 0
         };
     }
-        return { markers, board, printBoard, user, enterUserChoice, checkForWins }
+    return { markers, board, printBoard, user, enterUserChoice, checkForWins }
 }
 
 
@@ -104,14 +104,22 @@ while (true) {
         console.log(newGame.checkForWins().status)
         // console.log(newGame.checkForWins())
         newGame.printBoard();    
+        if (newGame.checkForWins().status == 1) {
+            break;
+        }
 
     } else {
         i++
+        // can do comp choice
         console.log("user o choice")
         newGame.enterUserChoice(newGame.user("O", userChoiceIndex))
         console.log(newGame.checkForWins().status)
         // console.log(newGame.checkForWins())
+        
         newGame.printBoard();    
+        if (newGame.checkForWins().status == 1) {
+            break;
+        }
     }
     if (i == 9) {
         break;
