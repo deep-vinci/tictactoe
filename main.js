@@ -80,18 +80,9 @@ let newGame = gameBoard();
 newGame.printBoard();
 // newGame.enterUserChoice(0);
 
-function temporaryUserInputShortener (userMarker, index) {
-    if (newGame.board[index-1] == "-") {
-        console.log(`User ${userMarker} choice`);
-        newGame.enterUserChoice(newGame.user(userMarker, index-1))
-        newGame.printBoard();    
-    } else {
-        console.error("Already choosen")
-    }
-}
 let i = 0;
 // newGame.checkForWins();
-while (true) {
+while (false) {
     let userChoiceIndex = prompt("Enter the choice");
     if (newGame.board[userChoiceIndex] != newGame.markers.placeholder) {
         console.error("skipped")
@@ -122,6 +113,7 @@ while (true) {
         }
     }
     if (i == 9) {
+        console.log("tie")
         break;
     }
 

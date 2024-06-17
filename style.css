@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+input, button, textarea, select {
+    font: inherit;
+  }
+  
+body {
+    height: 100vh;
+    width: 100vw;
+    background-image: linear-gradient(to bottom, #a969e3, #704BCE) ;
+    /* background-repeat: no-repeat;
+    background-size: ; */
+}
+
+.start-page {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #a969e3, #704BCE) ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-page-card {
+    /* border: 1px solid red; */
+    /* width: 200px; */
+    display: flex;
+    gap: 2rem;
+}
+
+p {
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    font-size: 1.4rem;
+}
+.start-page-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.start-page-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.start-page-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.start-page-buttons button {
+    height: 2.5rem;
+    border-radius: 15px;
+    color: #704BCE;
+    border: none;
+    font-weight: 600;
+}
+
+.start-page-buttons button:last-child {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+}
+.choose-user-page button {
+    background-color: transparent;
+    border: none;
+    padding: 20px;
+    border-radius: 30px;
+    /* border: 1px solid red; */
+}
+
+.user-page-card > p {
+    margin: 1rem;
+    font-size: 2rem;
+}
+
+.user-page-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.user-page-buttons button{ 
+    transition: 0.3s;
+
+}
+.user-page-buttons button:hover {
+    background-color: white;
+}
+.user-page-buttons button:hover path, 
+.user-page-buttons button:hover circle {
+    stroke: #704BCE;
+}
+
+/* path, circle {
+    stroke: #a969e3
+} */
+/* path {
+    background-color:;
+    stroke: #704BCE;
+} */
+
+@media only screen and (max-width: 480px) {  
+    .start-page-card {
+        width: 200px;
+        flex-direction: column;
+    }
+    
+    p {
+        font-size: 1.2rem;    
+    }
+    .user-page-buttons {
+        display: flex;
+        flex-direction: column;
+    }    
+
+}
