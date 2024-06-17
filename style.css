@@ -27,7 +27,14 @@ body {
     justify-content: center;
     align-items: center;
 }
-
+.marker-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
 .start-page-card {
     /* border: 1px solid red; */
     /* width: 200px; */
@@ -109,6 +116,7 @@ p {
     display: flex;
     align-items: center;
     flex-direction: column;
+    display: none;
 }
 
 .game-score-bar {
@@ -153,18 +161,34 @@ p {
 .game-board-container {
     height: 100%;
     display: grid;
-    width: min(600px, 90vw);
-    height: min(600px, 90vw);
+    width: min(500px, 90vw);
+    height: min(500px, 90vw);
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
     gap: 10px;
+}
+
+.pointer-events-none {
+    pointer-events: none;
 }
 
 .game-cell {
     background-color: var(--background-color);
     border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /* border: 2px solid red; */
 }
 
+.game-cell-wins {
+    background-color: #fdfdfd;
+}
+.game-cell-wins path {
+    stroke: #6849b6;
+}
+.game-cell-wins circle {
+    stroke: #6849b6;
+}
 .game-controls {
     margin: auto 0 10px 0;
     display: flex;
