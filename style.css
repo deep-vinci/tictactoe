@@ -12,7 +12,7 @@ input, button, textarea, select {
   }
   
 body {
-    height: 100vh;
+    height: 100dvh;
     width: 100vw;
     background-image: linear-gradient(to bottom, #a969e3, #704BCE) ;
     /* background-repeat: no-repeat;
@@ -21,7 +21,7 @@ body {
 
 .start-page {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     background-image: linear-gradient(to bottom, #a969e3, #704BCE) ;
     display: flex;
     justify-content: center;
@@ -29,7 +29,7 @@ body {
 }
 .marker-page {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,7 +112,7 @@ p {
 .game-page {
     /* border: 1px solid red; */
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     align-items: center;
     flex-direction: column;
