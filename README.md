@@ -19,6 +19,7 @@ This game is mostly made to practice `factory functions` and some topics relatin
 ### Phone view
 ![alt text](assets/image-1.png)
 
+
 ### Desktop view
 ![alt text](assets/image-2.png)
 
