@@ -138,6 +138,10 @@ p {
     margin-top: auto;
 }
 
+.highlight-marker {
+    background-color: white;
+}
+
 .game-score-stats div {
     /* border: 1px solid white; */
 }

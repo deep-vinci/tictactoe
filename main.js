@@ -146,6 +146,12 @@ function gameBoard () {
         console.log();
     }
     
+    function highlightMarker(marker) {
+        // console.warn(marker)
+        // let markerToHighlightdocument = document.querySelector(`.${marker.toLowerCase()}`);
+        // markerToHighlightdocument.classList.add("highlight-marker");
+    }
+
     function startGame () {
         let index = 0;
         
@@ -159,6 +165,7 @@ function gameBoard () {
                 } 
                 
                 if (index%2 == 0) {
+                    highlightMarker(defaultUserMarker);
                     // console.log(gameBoardDiv)
                     // first game is always by the player 1 so nothing out of normal just put the x on the cell
                     // update the map
@@ -200,6 +207,7 @@ function gameBoard () {
                     // for second game, check the mode if it is comp then let the comp choose random 
                     // choice form the available cells 
                     // update the map
+                    let nonDefaultUserMarker = (defaultUserMarker == markers.x) ? markers.o : markers.x;
 
                     enterUserChoice(user(nonDefaultUserMarker, userChoiceIndex))
                     printBoard();
