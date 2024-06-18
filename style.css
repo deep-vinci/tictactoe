@@ -182,6 +182,7 @@ p {
 
 .game-cell-wins {
     background-color: #fdfdfd;
+    border: #704BCE solid 2px;
 }
 .game-cell-wins path {
     stroke: #6849b6;

@@ -3,6 +3,8 @@ let withAFriend = document.querySelector(".with-a-friend")
 
 let gameBoardContainer = document.querySelector(".game-board-container");
 let gameBoardDivs = document.querySelectorAll(".game-cell");
+let gameButton = document.querySelectorAll(".game-button");
+let gameControls = document.querySelector(".game-controls");
 let restartButton = document.querySelector(".game-restart");
 let endGame = document.querySelector(".game-end");
 
@@ -29,15 +31,15 @@ function gameBoard () {
     }
 
     let svg = {
-        x: `<svg width="100" height="100" viewBox="0 0 91 91" fill="none" xmlns="http://www.w3.org/2000/svg">
+        X: `<svg width="100" height="100" viewBox="0 0 91 91" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M11.058 9.95032L45.8789 46.0084M45.8789 46.0084L79.8292 81.1649M45.8789 46.0084L81.0355 12.058M45.8789 46.0084L9.82083 80.8292" stroke="white" stroke-width="26"/>
         </svg>`,
-        o: `<svg width="100" height="100" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+        O: `<svg width="100" height="100" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="45" cy="45" r="32" stroke="white" stroke-width="26"/>
         </svg>`
     }
     let defaultUserMarker = markers.x;
-    let defaultplayMode = "";
+    let defaultplayMode = modes.player;
     let board = new Array(9).fill(markers.placeholder)
     
     
@@ -162,7 +164,7 @@ function gameBoard () {
                     // update the map
                     enterUserChoice(user(defaultUserMarker, userChoiceIndex))
                     printBoard();
-                    displayTheMarkers(gameBoardDiv, svg.x);
+                    displayTheMarkers(gameBoardDiv, svg[defaultUserMarker]);
                     
                     let winObj = checkForWins();
                     console.log(winObj.status)
@@ -170,6 +172,25 @@ function gameBoard () {
                         console.log("WIN")
                     } else {
                         console.log("NO WIN")
+                    }
+                    let nonDefaultUserMarker = (defaultUserMarker == markers.x) ? markers.o : markers.x;
+
+                    if (defaultplayMode == modes.computer) {
+                        let emptyCellsIndex = board.map((e,i) => e == markers.placeholder ? i : undefined).filter(x => x !== undefined);
+                        let computersRandomChoice = Math.floor(Math.random() * emptyCellsIndex.length);
+                        enterUserChoice(user(nonDefaultUserMarker, emptyCellsIndex[computersRandomChoice]))
+                        console.warn(emptyCellsIndex[computersRandomChoice])
+                        let gameDiv = gameBoardDivs[emptyCellsIndex[computersRandomChoice]];
+                        displayTheMarkers(gameDiv, svg[nonDefaultUserMarker]);
+                        printBoard()
+                        let winObj = checkForWins();
+                        console.log(winObj.status)
+                        if (winObj.status == 1) {
+                            console.log("WIN")
+                        } else {
+                            console.log("NO WIN")
+                        }
+                        index++;
                     }
                     // check for wins()
                     index++;
@@ -179,10 +200,10 @@ function gameBoard () {
                     // for second game, check the mode if it is comp then let the comp choose random 
                     // choice form the available cells 
                     // update the map
-                    let nonDefaultUserMarker = (defaultUserMarker == markers.x) ? markers.o : markers.x;
+
                     enterUserChoice(user(nonDefaultUserMarker, userChoiceIndex))
                     printBoard();
-                    displayTheMarkers(gameBoardDiv, svg.o);
+                    displayTheMarkers(gameBoardDiv, svg[nonDefaultUserMarker]);
                     
                     let winObj = checkForWins();
                     console.log(winObj.status)
@@ -191,6 +212,8 @@ function gameBoard () {
                     } else {
                         console.log("NO WIN")
                     }
+                
+                    
                     // check for wins()
                     index++;
                 }
@@ -248,7 +271,6 @@ while (false) {
 
 }
 let newGame = gameBoard();
-newGame.changeDefaultPlayMode(newGame.modes.computer);
 newGame.startGame();
 
 
@@ -260,10 +282,39 @@ endGame.addEventListener("click", () => {
     console.log("end game")
 })
 
-withComputer.addEventListener("click", () => {
+// console.log(gameButton[0].classList)
+// gameControls.addEventListener("click", (event) => {
+//     console.log(1)
+//     // if (event.target.classList.contains('game-button')) {
+//     //     startPage.style.display = "none";
+//     //     markerPage.style.display = "flex";
+//     // }
+// });
+
+withAFriend.addEventListener("click", () => {
+    newGame.changeDefaultPlayMode(newGame.modes.player);
     startPage.style.display = "none";
     markerPage.style.display = "flex";
 })
+
+withComputer.addEventListener("click", () => {
+    newGame.changeDefaultPlayMode(newGame.modes.computer);
+    startPage.style.display = "none";
+    markerPage.style.display = "flex";
+})
+// gameButton.forEach((button, i) => {
+//     button.addEventListener("click", () => {
+//         startPage.style.display = "none";
+//         markerPage.style.display = "flex";
+//     })
+// })
+
+// withComputer.addEventListener("click", () => {
+    
+//     startPage.style.display = "none";
+//     markerPage.style.display = "flex";
+
+// })
 
 markerButtons.forEach((markerButton, i) => {
     markerButton.addEventListener("click", () => {
