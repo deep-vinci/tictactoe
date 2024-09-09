@@ -14,7 +14,7 @@ let gamePage = document.querySelector(".game-page");
 
 let markerButtons = document.querySelectorAll(".marker-button");
 
-let status = document.querySelector(".status");
+let statusBox = document.querySelector(".status");
 
 function gameBoard () {
 
@@ -82,7 +82,8 @@ function gameBoard () {
             gameBoardDivs[e].classList.add("game-cell-wins");
         })
         gameBoardContainer.classList.add("pointer-events-none")
-        
+        statusBox.textContent = `Player ${winnerObj.winner} won`
+        statusBox.style.display = "block";
     }
     
     function displayTheMarkers (div, svg) {

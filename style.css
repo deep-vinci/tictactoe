@@ -241,6 +241,7 @@ p {
 .status {
     position: absolute;
     z-index: 10;
+    display: none;
 }
 
 .status-message > div {
