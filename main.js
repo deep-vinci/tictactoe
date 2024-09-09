@@ -14,7 +14,7 @@ let gamePage = document.querySelector(".game-page");
 
 let markerButtons = document.querySelectorAll(".marker-button");
 
-let statusBox = document.querySelector(".status");
+let statusBox = document.querySelector(".status-box");
 
 function gameBoard () {
 
