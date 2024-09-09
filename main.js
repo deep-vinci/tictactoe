@@ -14,6 +14,7 @@ let gamePage = document.querySelector(".game-page");
 
 let markerButtons = document.querySelectorAll(".marker-button");
 
+let status = document.querySelector(".status");
 
 function gameBoard () {
 
@@ -81,6 +82,7 @@ function gameBoard () {
             gameBoardDivs[e].classList.add("game-cell-wins");
         })
         gameBoardContainer.classList.add("pointer-events-none")
+        
     }
     
     function displayTheMarkers (div, svg) {
@@ -202,7 +204,7 @@ markerButtons.forEach((markerButton, i) => {
 
         newGame.changeDefaultUserMarker(marker);
 
-            markerPage.style.display = "none";
+        markerPage.style.display = "none";
         gamePage.style.display = "flex";
     })
 })

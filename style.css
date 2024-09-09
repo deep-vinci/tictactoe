@@ -235,3 +235,16 @@ p {
         flex-direction: column;
     }
 }
+
+
+
+.status {
+    position: absolute;
+    z-index: 10;
+}
+
+.status-message > div {
+    font-family: pricedown;
+    font-size: 5rem;
+    animation: status-message 0.4s ease-out 0s 1 normal;   
+}
