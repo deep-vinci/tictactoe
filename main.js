@@ -78,10 +78,10 @@ function gameBoard () {
     }
     
     function displayWinner(winnerObj) {
-        // winnerObj.sequence.forEach((e, i) => {
-        //     gameBoardDivs[e].classList.add("game-cell-wins");
-        // })
-        // gameBoardContainer.classList.add("pointer-events-none")
+        winnerObj.sequence.forEach((e, i) => {
+            gameBoardDivs[e].classList.add("game-cell-wins");
+        })
+        gameBoardContainer.classList.add("pointer-events-none")
         // statusBox.textContent = `Player ${winnerObj.winner} won`
         // statusBox.style.display = "block";
     }
