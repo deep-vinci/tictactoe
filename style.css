@@ -245,8 +245,6 @@ p {
     justify-content: center;
     align-items: center;
     display: none;
+    text-align: center;
 }
 
-.status {
-    z-index: 10;
-}
