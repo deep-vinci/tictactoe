@@ -1,5 +1,7 @@
 # Tic Tac Toe
 
+| [Start a new game](https://deep-vinci.github.io/tictactoe/) |
+| --------------------------------------- |
 
 <center>
 <svg width="100" height="100" viewBox="0 0 219 219" fill="none" xmlns="http://www.w3.org/2000/svg">
